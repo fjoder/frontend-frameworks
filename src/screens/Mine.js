@@ -2,21 +2,32 @@ import React from "react";
 import { connect } from "react-redux";
 import Header from "../components/Header";
 import { saveRepos } from "../actions/repos";
+import { reposSelector } from "../selectors/repos";
 
 class Mine extends React.Component {
+  state = {
+    listItems: []
+  };
   
   getMyRepos = () => {
     fetch("https://api.github.com/users/fjoder/repos")
       .then(response => response.json())
       .then(data => {
         this.props.dispatch(saveRepos(data));
+        this.setState({ listItems: this.createList() });
       });
   };
 
-  createListItems = () => {
-    // this.props.repos.map((r, index) => {
-    //   <li key={index}><a href={r.html_url}>{r.name}</a></li>
-    // });
+  createList = () => {
+    let list = [];
+    for (const r of this.props.repos) {
+      const item = (
+        <li key={r.id}><a href={r.html_url}>{r.name}</a></li>
+      )
+      list.push(item);
+    };
+
+    return list;
   };
 
   render() {
@@ -26,6 +37,9 @@ class Mine extends React.Component {
         <button
         onClick={this.getMyRepos}>Load Repos
         </button>
+        <ul>
+          {this.listItems}
+        </ul>
       </div>
     );
   }
@@ -33,7 +47,7 @@ class Mine extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    repos: state.repos
+    repos: state.repos // reposSelector(state)
   };
 };
 

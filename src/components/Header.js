@@ -1,9 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Header = ({ title }) => (
+const Header = ({ title, subTitle }) => (
   <header>
-    <h1>{title}</h1>
+    <h1></h1>
+    <div className="jumbotron py-3">
+      <div claclassNamess="container">
+        <h1 className="display-4">{title}</h1>
+        <p className="lead">{subTitle}</p>
+      </div>
+    </div>
     <ul className="nav nav-tabs">
       <li className="nav-item">
         <NavLink to="/" href="/" className="nav-link" activeClassName="active" exact={true}>Home</NavLink>

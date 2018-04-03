@@ -8,8 +8,8 @@ class Mine extends React.Component {
   getMyRepos = () => {
     fetch("https://api.github.com/users/fjoder/repos")
       .then(response => response.json())
-      .then(respJson => {
-        this.props.dispatch(saveRepos(respJson.items));
+      .then(data => {
+        this.props.dispatch(saveRepos(data));
       });
   };
 
@@ -19,20 +19,13 @@ class Mine extends React.Component {
     // });
   };
 
-  handleClick = e => {
-    this.getMyRepos();
-  };
-
   render() {
     return (
       <div className="container">
-        <Header title="Mine" />
+        <Header title="Mine" subTitle="My list of repositories on GitHub" />
         <button
-        onClick={this.handleClick}>Load Repos
+        onClick={this.getMyRepos}>Load Repos
         </button>
-        <ul>
-          {this.createListItems()}
-        </ul>
       </div>
     );
   }

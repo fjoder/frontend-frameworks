@@ -24,7 +24,7 @@ class Search extends React.Component {
   render() {
     return (
       <div className="container">
-        <Header title="Search" />
+        <Header title="Search" subTitle="Search GitHub for a list of repositories" />
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"

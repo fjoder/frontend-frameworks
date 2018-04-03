@@ -41,7 +41,7 @@ class Search extends React.Component {
     return (
       <div className="container">
         <div className="card">
-          <Header title="Search" subTitle="Search GitHub for a list of repositories" />
+          <Header title="Public Repos" subTitle="Search GitHub for a list of repositories" />
           <div className="card-body">
             <form onSubmit={this.handleSubmit}>
               <input

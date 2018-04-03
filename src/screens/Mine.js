@@ -40,7 +40,7 @@ class Mine extends React.Component {
     return (
       <div className="container">
         <div className="card">
-          <Header title="Mine" subTitle="My list of repositories on GitHub" />
+          <Header title="My Repos" subTitle="My repositories currently on GitHub" />
           <div className="card-body">
             <div className="list-group">
               {this.state.listItems}

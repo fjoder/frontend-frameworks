@@ -5,7 +5,7 @@ const Header = ({ title, subTitle }) => (
   <header>
     <h1></h1>
     <div className="jumbotron py-3">
-      <div claclassNamess="container">
+      <div className="container">
         <h1 className="display-4">{title}</h1>
         <p className="lead">{subTitle}</p>
       </div>

@@ -22,7 +22,9 @@ class Search extends React.Component {
     let list = [];
     for (const r of this.props.repos) {
       const item = (
-        <a className="list-group-item list-group-item-action" href={r.html_url} key={r.id}>{r.name}</a>
+        <a className="list-group-item list-group-item-action" href={r.html_url} key={r.id}>
+          <strong>{r.name}</strong> - {r.description}
+        </a>
       )
       list.push(item);
     };

@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import Header from "../components/Header";
-import { saveRepos } from "../actions/AppActions";
+import React from 'react';
+import { connect } from 'react-redux';
+import Header from '../components/Header';
+import { saveRepos } from '../actions/repos';
 
 class Search extends React.Component {
   state = {
@@ -25,7 +25,6 @@ class Search extends React.Component {
     return (
       <div className="container">
         <Header title="Search" />
-        <hr />
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"

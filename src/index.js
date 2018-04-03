@@ -1,38 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { createStore } from 'redux';
-import { Provider } from "react-redux";
-import { Home, Search, Mine } from "./screens";
+import { Provider } from 'react-redux';
+import AppRouter from './routers/AppRouter';
+import configureStore from './store/configureStore';
 
-const initialState = {
-  repos: {}
-}
+const store = configureStore();
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'SAVE_REPOS':
-      return { ...state, repos: action.repos };
-    default:
-      return { ...state };
-  }
-};
-
-const store = createStore(
-  reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-
-const Index = (store) => (
+const jsx = (
   <Provider store={store}>
-    <Router>
-      <div>
-        <Route path="/" component={Home} />
-        <Route path="/search" component={Search} />
-        <Route path="/mine" component={Mine} />
-      </div>
-    </Router>
+    <AppRouter />
   </Provider>
 );
 
-render(<Index />, document.getElementById('root'));
+render(jsx, document.getElementById('root'));

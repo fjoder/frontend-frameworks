@@ -1,12 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import Header from "../components/Header";
-import { saveRepos } from "../actions/AppActions";
+import { saveRepos } from "../actions/repos";
 
 class Mine extends React.Component {
-  state = {
-  };
-
+  
   getMyRepos = () => {
     fetch("https://api.github.com/users/fjoder/repos")
       .then(response => response.json())
@@ -16,18 +14,21 @@ class Mine extends React.Component {
   };
 
   createListItems = () => {
-    this.props.repos.map((r, index) => {
-      <li key={index}><a href={r.html_url}>{r.name}</a></li>
-    });
+    // this.props.repos.map((r, index) => {
+    //   <li key={index}><a href={r.html_url}>{r.name}</a></li>
+    // });
+  };
+
+  handleClick = e => {
+    this.getMyRepos();
   };
 
   render() {
     return (
       <div className="container">
         <Header title="Mine" />
-        <hr />
         <button
-        onClick={this.getMyRepos()}>Load Repos
+        onClick={this.handleClick}>Load Repos
         </button>
         <ul>
           {this.createListItems()}

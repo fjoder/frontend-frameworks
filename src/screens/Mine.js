@@ -22,7 +22,7 @@ class Mine extends React.Component {
     let list = [];
     for (const r of this.props.repos) {
       const item = (
-        <li key={r.id}><a href={r.html_url}>{r.name}</a></li>
+        <a className="list-group-item list-group-item-action" href={r.html_url} key={r.id}>{r.name}</a>
       )
       list.push(item);
     };
@@ -30,16 +30,21 @@ class Mine extends React.Component {
     return list;
   };
 
+  componentWillMount() {
+    this.getMyRepos();
+  }
+
   render() {
     return (
       <div className="container">
-        <Header title="Mine" subTitle="My list of repositories on GitHub" />
-        <button
-        onClick={this.getMyRepos}>Load Repos
-        </button>
-        <ul>
-          {this.listItems}
-        </ul>
+        <div className="card">
+          <Header title="Mine" subTitle="My list of repositories on GitHub" />
+          <div className="card-body">
+            <div className="list-group">
+              {this.state.listItems}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -47,7 +52,7 @@ class Mine extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    repos: state.repos // reposSelector(state)
+    repos: state.repos
   };
 };
 

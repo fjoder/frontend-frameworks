@@ -2,15 +2,14 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Header = ({ title, subTitle }) => (
-  <header>
-    <h1></h1>
-    <div className="jumbotron py-3">
+  <div className="card-header">
+    <div className="jumbotron  py-3">
       <div className="container">
         <h1 className="display-4">{title}</h1>
         <p className="lead">{subTitle}</p>
       </div>
     </div>
-    <ul className="nav nav-tabs">
+    <ul className="nav nav-tabs card-header-tabs">
       <li className="nav-item">
         <NavLink to="/" href="/" className="nav-link" activeClassName="active" exact={true}>Home</NavLink>
       </li>
@@ -21,7 +20,7 @@ const Header = ({ title, subTitle }) => (
         <NavLink to="/mine" href="/mine" className="nav-link" activeClassName="active">My Repos</NavLink>
       </li>
     </ul>
-  </header>
+  </div>
 );
 
 export default Header;
